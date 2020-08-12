@@ -23,6 +23,7 @@ android {
         }
     }
 }
+def koinVersion = "2.1.5"
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -36,5 +37,18 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test:rules:1.1.1'
     androidTestImplementation 'androidx.test:runner:1.1.1'
+
+    //KOIN
+    // Koin AndroidX Scope feature
+    implementation "org.koin:koin-androidx-scope:${koinVersion}"
+
+    // Koin AndroidX ViewModel feature
+    implementation "org.koin:koin-androidx-viewmodel:${koinVersion}"
+    // Koin AndroidX Fragment Factory (unstable version)
+    implementation "org.koin:koin-androidx-fragment:${koinVersion}"
+    // Koin for Kotlin apps
+    implementation "org.koin:koin-core:${koinVersion}"
+    // Testing
+    implementation "org.koin:koin-test:${koinVersion}"
 
 }

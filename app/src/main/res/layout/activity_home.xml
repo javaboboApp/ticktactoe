@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:id="@+id/activity_home"
     tools:context=".ui.HomeActivity">
 
 
@@ -31,14 +31,14 @@
 
                 <TextView
                     android:id="@+id/title"
-                    android:text="TicTacToe"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/dimen24sp"
-
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/icon"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+
+                    android:layout_toRightOf="@+id/icon"
+                    android:text="TicTacToe"
+                    android:textSize="@dimen/dimen24sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/icon"
@@ -66,18 +66,18 @@
         android:id="@+id/who_player"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/dimen24sp"
         android:fontFamily="serif-monospace"
+        android:text="@string/who_play"
+        android:textSize="@dimen/dimen24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bg_tictactoe"
-        android:text="@string/who_play" />
+        app:layout_constraintTop_toBottomOf="@+id/bg_tictactoe" />
 
     <ImageView
-
         android:id="@+id/who_play_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/circule_player"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
