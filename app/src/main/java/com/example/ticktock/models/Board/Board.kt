@@ -20,11 +20,11 @@ class Board() : IBoard {
          WIN_PLAYER1,DRAW,LOSS
      }
     override fun move(x: Int, y: Int, player: Player): Boolean {
-        require(x in 1..ROWS-1) {
-            throw IllegalArgumentException("x must be between 1 and $ROWS")
+        require(x in 0..ROWS-1) {
+            throw IllegalArgumentException("x must be between 0 and ${ROWS-1}")
         }
-        require(y in 1..COLUMMS-1) {
-            throw IllegalArgumentException("x must be between 1 and $ROWS")
+        require(y in 0..COLUMMS-1) {
+            throw IllegalArgumentException("x must be between 0 and ${ROWS-1}")
         }
         require(matrix[x][y].player_id == 0) {
             throw IllegalStateException("This move is not allowed!!")

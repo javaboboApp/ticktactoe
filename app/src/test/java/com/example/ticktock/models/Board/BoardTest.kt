@@ -29,9 +29,9 @@ class BoardTest{
     @Test
     fun test_board_does_not_throw_exeptions() {
         val board = Board()
+        board.move(0, 0, PLAYER_1)
         board.move(0, 1, PLAYER_1)
         board.move(0, 2, PLAYER_1)
-        board.move(0, 3, PLAYER_1)
 
         board.move(1, 0, PLAYER_1)
         board.move(1, 1, PLAYER_1)
