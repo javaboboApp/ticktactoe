@@ -1,8 +1,8 @@
 
 
-# ndroid Technical Test
+# Android Technical Test
 
-![Alt text](images/Kata_TicTacToe.png?raw=true "Tic Tac Toe")
+![Alt text](https://github.com/stephane-genicot/katas/raw/master/images/Kata_TicTacToe.png?raw=true)
 
 ## About this Kata
 
