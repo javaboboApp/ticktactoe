@@ -3,7 +3,7 @@ package com.example.ticktock.models
 import com.example.ticktock.utils.Constants.PLAYER_1
 import com.example.ticktock.utils.Constants.PLAYER_2
 
-class Player(val id: Int) {
+class Player(val id: Int, val name : String) {
 
 
     fun nextPlayer(): Player {

@@ -10,6 +10,6 @@ object Constants {
     val COLUMMS =3
     val MAX_MOVES_ALLOWED =9
 
-    val PLAYER_1 =Player(1)
-    val PLAYER_2 =Player(-1)
+    val PLAYER_1 =Player(1, "Player 1")
+    val PLAYER_2 =Player(-1, "Player 2")
 }

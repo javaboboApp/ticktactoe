@@ -38,13 +38,14 @@ open class Game(val board: Board, var currentPlayer: Player) :
             return
         }
         try {
+            val prevPlayer = currentPlayer
             val isFinished = board.move(x, y, currentPlayer)
             currentPlayer = currentPlayer.nextPlayer()
             if (!isFinished)
-                gameEventObservable.onNext(MADE_MOVED(x, y))
+                gameEventObservable.onNext(MADE_MOVED(x, y, prevPlayer))
             else {
                 status = Status.FINISHED
-                gameEventObservable.onNext(GAME_FINISHED(board.getCurrentState(), x, y))
+                gameEventObservable.onNext(GAME_FINISHED(board.getCurrentState(), x, y, prevPlayer))
             }
         } catch (ex: IllegalStateException) {
             //TODO: It happen when an illegal move come up, would be a good idea in the new version to create a custom exeption.

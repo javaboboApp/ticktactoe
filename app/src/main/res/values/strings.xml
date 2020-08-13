@@ -3,4 +3,9 @@
     <string name="who_play">Who play?</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="reset">Reset</string>
+    <string name="reseted_msg">Game reseted</string>
+    <string name="game_finished_was_draw">Game finished and It was draw</string>
+    <string name="game_finished_won_msg"><![CDATA[Game finished: WON ->]]></string>
+    <string name="game_error_msg">"Something was wrong: "</string>
 </resources>

@@ -22,7 +22,7 @@ private const val TAG = "Board"
 class Board() : IBoard {
     private var numMoves = 0
     private lateinit var state: State
-    private val matrix: Array<Array<Cell>> =
+    private var matrix: Array<Array<Cell>> =
         Array(ROWS) { Array(COLUMMS) { Cell() } }
 
     enum class State {
@@ -74,7 +74,7 @@ class Board() : IBoard {
 
     override fun reset() {
         numMoves = 0
-        Array(ROWS) { Array(COLUMMS) { Cell() } }
+        matrix = Array(ROWS) { Array(COLUMMS) { Cell() } }
         state = State.PLAYING
     }
 
@@ -85,6 +85,7 @@ class Board() : IBoard {
                 (matrix[0][0] == matrix[1][0] && matrix[0][0] == matrix[2][0]) ||
                 (matrix[2][0] == matrix[2][1] && matrix[2][0] == matrix[2][2]) ||
                 (matrix[2][0] == matrix[1][1] && matrix[0][0] == matrix[0][2]) ||
+
                 (matrix[0][2] == matrix[1][2] && matrix[0][2] == matrix[2][2]) ||
                 (matrix[0][1] == matrix[1][1] && matrix[0][1] == matrix[2][1]) ||
                 (matrix[1][0] == matrix[1][1] && matrix[1][0] == matrix[1][2])

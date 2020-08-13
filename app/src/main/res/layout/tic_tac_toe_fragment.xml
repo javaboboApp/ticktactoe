@@ -28,9 +28,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
                 android:background="@android:color/white"
-
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:menu="@menu/main_menu"
+                android:onClick="@{() -> ticTacToeViewModel.reset()}"
                 app:titleTextColor="@android:color/white">
 
                 <RelativeLayout
@@ -77,106 +78,109 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
 
+                android:onClick="@{() -> ticTacToeViewModel.makeMove(0, 0)}"
+                android:src='@{ticTacToeViewModel.currentsImg["00"] }'
                 app:layout_column="0"
                 app:layout_columnWeight="0.2"
                 app:layout_row="0"
-                app:layout_rowWeight="1"
-                android:src="@drawable/circule_player"
-
-                android:onClick="@{() -> ticTacToeViewModel.makeMove(0, 0)}"
-                />
+                app:layout_rowWeight="1" />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_row="0"
+                android:onClick="@{() -> ticTacToeViewModel.makeMove(0, 1)}"
+                android:src='@{ticTacToeViewModel.currentsImg["01"]}'
                 app:layout_column="1"
                 app:layout_columnWeight="0.1"
-                android:src="@drawable/x_player"
-                android:onClick="@{() -> ticTacToeViewModel.makeMove(0, 1)}"
+                app:layout_row="0"
 
                 app:layout_rowWeight="1" />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_row="0"
-                app:layout_column="2"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                android:src="@drawable/x_player"
                 android:onClick="@{() -> ticTacToeViewModel.makeMove(0, 2)}"
+                android:src='@{ticTacToeViewModel.currentsImg["02"]}'
+                app:layout_column="2"
+                app:layout_columnWeight="1"
+                app:layout_row="0"
+
+                app:layout_rowWeight="1"
 
                 />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_row="1"
-                app:layout_column="0"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                android:src="@drawable/x_player"
                 android:onClick="@{() -> ticTacToeViewModel.makeMove(1, 0)}"
-
-                />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_row="1"
-                app:layout_column="1"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                android:src="@drawable/x_player"
-                android:onClick="@{() -> ticTacToeViewModel.makeMove(1, 1)}"
-
-                />
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_row="1"
-                app:layout_column="2"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                android:src="@drawable/x_player"
-                android:onClick="@{() -> ticTacToeViewModel.makeMove(1, 2)}"
-
-
-                />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_row="2"
+                android:src='@{ticTacToeViewModel.currentsImg["10"]}'
                 app:layout_column="0"
                 app:layout_columnWeight="1"
+                app:layout_row="1"
                 app:layout_rowWeight="1"
-                android:onClick="@{() -> ticTacToeViewModel.makeMove(2, 0)}"
-
-                android:src="@drawable/x_player"
 
                 />
+
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_row="2"
+                android:onClick="@{() -> ticTacToeViewModel.makeMove(1, 1)}"
+                android:src='@{ticTacToeViewModel.currentsImg["11"]}'
                 app:layout_column="1"
                 app:layout_columnWeight="1"
+                app:layout_row="1"
                 app:layout_rowWeight="1"
-                android:src="@drawable/x_player"
-                android:onClick="@{() -> ticTacToeViewModel.makeMove(2, 1)}"
 
                 />
+
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_row="2"
+                android:onClick="@{() -> ticTacToeViewModel.makeMove(1, 2)}"
+                android:src='@{ticTacToeViewModel.currentsImg["12"]}'
                 app:layout_column="2"
                 app:layout_columnWeight="1"
+                app:layout_row="1"
+
                 app:layout_rowWeight="1"
-                android:src="@drawable/x_player"
+
+
+                />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:onClick="@{() -> ticTacToeViewModel.makeMove(2, 0)}"
+                android:src='@{ticTacToeViewModel.currentsImg["20"]}'
+                app:layout_column="0"
+                app:layout_columnWeight="1"
+                app:layout_row="2"
+                app:layout_rowWeight="1"
+
+
+                />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:onClick="@{() -> ticTacToeViewModel.makeMove(2, 1)}"
+                android:src='@{ticTacToeViewModel.currentsImg["21"]}'
+                app:layout_column="1"
+                app:layout_columnWeight="1"
+                app:layout_row="2"
+                app:layout_rowWeight="1"
+
+                />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:onClick="@{() -> ticTacToeViewModel.makeMove(2, 2)}"
+                android:src='@{ticTacToeViewModel.currentsImg["22"]}'
+                app:layout_column="2"
+                app:layout_columnWeight="1"
+                app:layout_row="2"
+                app:layout_rowWeight="1"
 
                 />
         </androidx.gridlayout.widget.GridLayout>
@@ -197,7 +201,7 @@
             android:id="@+id/who_play_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/x_player"
+            android:src='@{ticTacToeViewModel.currentsImg["who_is_next"]}'
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
