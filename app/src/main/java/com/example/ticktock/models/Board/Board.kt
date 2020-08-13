@@ -5,6 +5,7 @@ import android.util.Log
 import com.example.ticktock.models.Player
 import com.example.ticktock.utils.Constants.COLUMMS
 import com.example.ticktock.utils.Constants.MAX_MOVES_ALLOWED
+import com.example.ticktock.utils.Constants.MOVE_NOT_ALLOWED_MSG
 import com.example.ticktock.utils.Constants.PLAYER_1
 import com.example.ticktock.utils.Constants.ROWS
 import java.lang.IllegalArgumentException
@@ -46,7 +47,7 @@ class Board() : IBoard {
             throw IllegalArgumentException("x must be between 0 and ${ROWS - 1}")
         }
         require(matrix[x][y].player_id == 0) {
-            throw IllegalStateException("This move is not allowed!!")
+            throw IllegalStateException(MOVE_NOT_ALLOWED_MSG)
         }
 
         matrix[x][y].player_id = player.id

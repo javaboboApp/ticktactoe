@@ -3,6 +3,7 @@ package com.example.ticktock.models.game
 import com.example.ticktock.models.Board.Board
 import com.example.ticktock.models.Player
 import com.example.ticktock.models.game.GameEvent.*
+import com.example.ticktock.utils.Constants.ERROR_MSG_FINISHED
 import io.reactivex.Observable
 import io.reactivex.subjects.AsyncSubject
 import io.reactivex.subjects.BehaviorSubject
@@ -33,7 +34,7 @@ open class Game(val board: Board, var currentPlayer: Player) :
 
     open override fun makeMove(x: Int, y: Int) {
         if (status == Status.FINISHED) {
-            gameEventObservable.onNext(ERROR("The game is finished"))
+            gameEventObservable.onNext(ERROR(ERROR_MSG_FINISHED))
             return
         }
         try {

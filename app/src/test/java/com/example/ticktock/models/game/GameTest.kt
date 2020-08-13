@@ -1,6 +1,7 @@
 package com.example.ticktock.models.game
 
 import com.example.ticktock.models.Board.Board
+import com.example.ticktock.utils.Constants.MOVE_NOT_ALLOWED_MSG
 import com.example.ticktock.utils.Constants.PLAYER_1
 import com.example.ticktock.utils.Constants.PLAYER_2
 import io.reactivex.observers.TestObserver
@@ -9,6 +10,7 @@ import junit.framework.Assert.assertEquals
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
+import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 
@@ -131,5 +133,18 @@ class GameTest {
 
     }
 
+    @Test
+    fun test_check_an_error_is_emited_when_we_called_make_move_with_wrong_arguments() {
+        val board = Board()
+        val game = Game(board, PLAYER_1)
+        val gameEventObservable = game.getEventObservable()
 
+        val testSubscriber: TestObserver<GameEvent> = TestObserver()
+        gameEventObservable.subscribe(testSubscriber)
+
+        game.makeMove(0,0)
+        game.makeMove(0,0)
+
+        testSubscriber.assertValues( GameEvent.MADE_MOVED(0, 0),  GameEvent.ERROR(MOVE_NOT_ALLOWED_MSG))
+    }
 }
