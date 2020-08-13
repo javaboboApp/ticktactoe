@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -10,21 +9,19 @@
             type="com.example.ticktock.ui.tictactoe.TicTacToeViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/activity_home"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
-        tools:context=".ui.main.HomeActivity">
+        android:background="@android:color/white">
 
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+
+            >
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -62,15 +59,127 @@
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <ImageView
-            android:id="@+id/bg_tictactoe"
-            android:layout_width="match_parent"
+
+        <androidx.gridlayout.widget.GridLayout
+            android:id="@+id/bg_container_relativelayout"
+            android:layout_width="@dimen/dimen500dp"
             android:layout_height="@dimen/dimen500dp"
-            android:src="@drawable/bg_tictactoe"
+            android:background="@drawable/bg_tictactoe"
+            android:padding="32dp"
+            app:columnCount="3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:rowCount="3">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                app:layout_column="0"
+                app:layout_columnWeight="0.2"
+                app:layout_row="0"
+                app:layout_rowWeight="1"
+                android:src="@drawable/circule_player"
+
+                android:onClick="@{() -> ticTacToeViewModel.makeMove(0, 0)}"
+                />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_row="0"
+                app:layout_column="1"
+                app:layout_columnWeight="0.1"
+                android:src="@drawable/x_player"
+                android:onClick="@{() -> ticTacToeViewModel.makeMove(0, 1)}"
+
+                app:layout_rowWeight="1" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_row="0"
+                app:layout_column="2"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:src="@drawable/x_player"
+                android:onClick="@{() -> ticTacToeViewModel.makeMove(0, 2)}"
+
+                />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_row="1"
+                app:layout_column="0"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:src="@drawable/x_player"
+                android:onClick="@{() -> ticTacToeViewModel.makeMove(1, 0)}"
+
+                />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_row="1"
+                app:layout_column="1"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:src="@drawable/x_player"
+                android:onClick="@{() -> ticTacToeViewModel.makeMove(1, 1)}"
+
+                />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_row="1"
+                app:layout_column="2"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:src="@drawable/x_player"
+                android:onClick="@{() -> ticTacToeViewModel.makeMove(1, 2)}"
+
+
+                />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_row="2"
+                app:layout_column="0"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:onClick="@{() -> ticTacToeViewModel.makeMove(2, 0)}"
+
+                android:src="@drawable/x_player"
+
+                />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_row="2"
+                app:layout_column="1"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:src="@drawable/x_player"
+                android:onClick="@{() -> ticTacToeViewModel.makeMove(2, 1)}"
+
+                />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_row="2"
+                app:layout_column="2"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:src="@drawable/x_player"
+                android:onClick="@{() -> ticTacToeViewModel.makeMove(2, 2)}"
+
+                />
+        </androidx.gridlayout.widget.GridLayout>
 
 
         <TextView
@@ -82,13 +191,13 @@
             android:textSize="@dimen/dimen24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bg_tictactoe" />
+            app:layout_constraintTop_toBottomOf="@+id/bg_container_relativelayout" />
 
         <ImageView
             android:id="@+id/who_play_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/circule_player"
+            android:src="@drawable/x_player"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
