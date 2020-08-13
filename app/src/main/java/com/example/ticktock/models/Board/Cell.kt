@@ -21,7 +21,7 @@ class Cell(
 
         other as Cell
 
-        if (player_id != other.player_id) return false
+        if (player_id != other.player_id || player_id == 0) return false
 
         return true
     }

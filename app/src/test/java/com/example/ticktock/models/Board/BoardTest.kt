@@ -50,5 +50,91 @@ class BoardTest {
         assertEquals(false, board.move(0, 0, PLAYER_1))
         assertEquals(false, board.move(0, 1, PLAYER_2))
         assertEquals(false, board.move(0, 2, PLAYER_1))
+        assertEquals(Board.State.PLAYING, board.getCurrentState())
+
     }
+
+    @Test
+    fun test_check_that_player_1_should_be_win_with_this_scenario_horizontal() {
+        val board = Board()
+        assertEquals(false, board.move(0, 0, PLAYER_1))
+        assertEquals(false, board.move(0, 1, PLAYER_1))
+        assertEquals(true, board.move(0, 2, PLAYER_1))
+        assertEquals(Board.State.WIN_PLAYER1, board.getCurrentState())
+    }
+
+    @Test
+    fun test_check_that_player_1_should_be_win_with_this_scenario_diagonal() {
+        val board = Board()
+        assertEquals(false, board.move(0, 0, PLAYER_1))
+        assertEquals(false, board.move(1, 1, PLAYER_1))
+        assertEquals(true, board.move(2, 2, PLAYER_1))
+        assertEquals(Board.State.WIN_PLAYER1, board.getCurrentState())
+
+    }
+
+
+    @Test
+    fun test_check_that_player_1_should_be_win_with_this_scenario_vertical() {
+        val board = Board()
+        assertEquals(false, board.move(0, 0, PLAYER_1))
+        assertEquals(false, board.move(1, 0, PLAYER_1))
+        assertEquals(true, board.move(2, 0, PLAYER_1))
+        assertEquals(Board.State.WIN_PLAYER1, board.getCurrentState())
+
+    }
+
+
+    @Test
+    fun test_check_that_player_2_should_be_win_with_this_scenario_horizontal() {
+        val board = Board()
+        assertEquals(false, board.move(0, 0, PLAYER_2))
+        assertEquals(false, board.move(0, 1, PLAYER_2))
+        assertEquals(true, board.move(0, 2, PLAYER_2))
+        assertEquals(Board.State.WIN_PLAYER2, board.getCurrentState())
+
+
+
+    }
+
+    @Test
+    fun test_check_that_player_2_should_be_win_with_this_scenario_diagonal() {
+        val board = Board()
+        assertEquals(false, board.move(0, 0, PLAYER_2))
+        assertEquals(false, board.move(1, 1, PLAYER_2))
+        assertEquals(true, board.move(2, 2, PLAYER_2))
+        assertEquals(Board.State.WIN_PLAYER2, board.getCurrentState())
+
+    }
+
+
+    @Test
+    fun test_check_that_player_2_should_be_win_with_this_scenario_vertical() {
+        val board = Board()
+        assertEquals(false, board.move(0, 0, PLAYER_2))
+        assertEquals(false, board.move(1, 0, PLAYER_2))
+        assertEquals(true, board.move(2, 0, PLAYER_2))
+        assertEquals(Board.State.WIN_PLAYER2, board.getCurrentState())
+
+    }
+
+
+    @Test
+    fun test_check_that_should_be_a_winner_with_this_random_scenario_vertical() {
+        val board = Board()
+        assertEquals(false, board.move(0, 0, PLAYER_2))
+        assertEquals(false, board.move(0, 1, PLAYER_1))
+        assertEquals(false, board.move(0, 2, PLAYER_2))
+
+        assertEquals(false, board.move(1, 2, PLAYER_1))
+
+        assertEquals(false, board.move(1, 0, PLAYER_2))
+        assertEquals(false, board.move(1, 1, PLAYER_1))
+
+        assertEquals(true, board.move(2, 0, PLAYER_2))
+
+        assertEquals(Board.State.WIN_PLAYER2, board.getCurrentState())
+    }
+
+
 }
