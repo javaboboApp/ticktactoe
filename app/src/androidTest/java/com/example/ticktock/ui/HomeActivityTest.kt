@@ -7,9 +7,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.example.ticktock.R
-import kotlinx.android.synthetic.main.activity_home.view.*
-import org.junit.After
-import org.junit.Before
+import com.example.ticktock.ui.main.HomeActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
