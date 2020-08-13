@@ -32,8 +32,22 @@ class Board() : IBoard {
 
         matrix[x][y].player_id = player.id
 
-       return true;
 
+
+       return checkGameStatus();
+
+    }
+
+    private fun checkGameStatus(): Boolean {
+       //TODO WE KNOWS THAT IS A 3X3 BOARD
+        return (matrix[0][0] == matrix [0][1] && matrix[0][0] == matrix [0][2]) ||
+                (matrix[0][0] == matrix [1][1] && matrix[0][0] == matrix [2][2]) ||
+                (matrix[0][0] == matrix [1][0] && matrix[0][0] == matrix [2][0]) ||
+                (matrix[2][0] == matrix [2][1] && matrix[2][0] == matrix [2][2]) ||
+                (matrix[2][0] == matrix [1][1] && matrix[0][0] == matrix [0][2]) ||
+                (matrix[0][2] == matrix [1][2] && matrix[0][2] == matrix [2][2]) ||
+                (matrix[0][1] == matrix [1][1] && matrix[0][1] == matrix [2][1]) ||
+                (matrix[1][0] == matrix [1][1] && matrix[1][0] == matrix [1][2])
     }
 
 
