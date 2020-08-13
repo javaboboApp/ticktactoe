@@ -32,6 +32,12 @@ class Board() : IBoard {
         state = State.PLAYING
     }
 
+    /*
+    * @Param x position x of the board
+    * @Param y position y of the board
+    * @Param player who want to play
+    * @Return true if the game is over otherwise return false
+    * */
     override fun move(x: Int, y: Int, player: Player): Boolean {
         require(x in 0..ROWS - 1) {
             throw IllegalArgumentException("x must be between 0 and ${ROWS - 1}")
@@ -51,6 +57,7 @@ class Board() : IBoard {
         if (!checkStatus) {
             if (numMoves == MAX_MOVES_ALLOWED) {
                 state = State.DRAW
+                return true
             }
         } else {
 
