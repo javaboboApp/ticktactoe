@@ -24,10 +24,7 @@ class HomeActivityTest {
         onView(withId(R.id.activity_home)).check(matches(isDisplayed()))
     }
 
-    @Test
-    fun test_check_bg_tictactoe_is_visible() {
-        onView(withId(R.id.bg_tictactoe)).check(matches(isDisplayed()))
-    }
+
 
     @Test
     fun test_who_is_playing_text_is_visble() {

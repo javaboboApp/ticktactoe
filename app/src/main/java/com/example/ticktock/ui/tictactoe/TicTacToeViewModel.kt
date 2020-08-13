@@ -96,6 +96,8 @@ class TicTacToeViewModel(private var game: Game) : ViewModel() {
         super.onCleared()
         compositeDisposable.clear()
         currentsImg?.clear()
+        currentsImg!!["who_is_next"] = R.drawable.x_player
+
     }
 
 

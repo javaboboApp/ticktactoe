@@ -10,6 +10,7 @@ import junit.framework.Assert.assertEquals
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
+import org.mockito.ArgumentMatchers.any
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
@@ -45,7 +46,7 @@ class GameTest {
         testSubscriber
             .assertSubscribed()
             .assertNoErrors()
-            .assertValue(GameEvent.MADE_MOVED(1, 2))
+            .assertValue(GameEvent.MADE_MOVED(1, 2,PLAYER_1))
 
 
     }
@@ -66,13 +67,13 @@ class GameTest {
         testSubscriber
             .assertSubscribed()
             .assertNoErrors()
-            .assertValue(GameEvent.MADE_MOVED(0, 0))
+            .assertValue(GameEvent.MADE_MOVED(0, 0,PLAYER_1))
         game.currentPlayer = PLAYER_1
 
         game.makeMove(0, 1)
 
 
-        testSubscriber.assertValues(GameEvent.MADE_MOVED(0, 0), GameEvent.MADE_MOVED(0, 1))
+        testSubscriber.assertValues(GameEvent.MADE_MOVED(0, 0, PLAYER_1), GameEvent.MADE_MOVED(0, 1,PLAYER_1))
         game.currentPlayer = PLAYER_1
 
         game.makeMove(0, 2)
@@ -80,8 +81,8 @@ class GameTest {
         assertEquals(Status.FINISHED, game.getCurrentState())
 
         testSubscriber.assertValues(
-            GameEvent.MADE_MOVED(0, 0), GameEvent.MADE_MOVED(0, 1),
-            GameEvent.GAME_FINISHED(board.getCurrentState(), 0, 2)
+            GameEvent.MADE_MOVED(0, 0,PLAYER_1), GameEvent.MADE_MOVED(0, 1,PLAYER_1),
+            GameEvent.GAME_FINISHED(board.getCurrentState(), 0, 2, PLAYER_2)
         )
 
     }
@@ -115,17 +116,17 @@ class GameTest {
             .assertSubscribed()
             .assertNoErrors()
             .assertValues(
-                GameEvent.MADE_MOVED(0, 0),
-                GameEvent.MADE_MOVED(0, 1),
-                GameEvent.MADE_MOVED(0, 2),
+                GameEvent.MADE_MOVED(0, 0, PLAYER_1),
+                GameEvent.MADE_MOVED(0, 1, PLAYER_2),
+                GameEvent.MADE_MOVED(0, 2, PLAYER_1),
 
-                GameEvent.MADE_MOVED(1, 0),
-                GameEvent.MADE_MOVED(1, 1),
-                GameEvent.MADE_MOVED(1, 2),
+                GameEvent.MADE_MOVED(1, 0, PLAYER_2),
+                GameEvent.MADE_MOVED(1, 1, PLAYER_1),
+                GameEvent.MADE_MOVED(1, 2, PLAYER_2),
 
-                GameEvent.MADE_MOVED(2, 0),
-                GameEvent.MADE_MOVED(2, 1),
-                GameEvent.GAME_FINISHED(board.getCurrentState(), 2, 2)
+                GameEvent.MADE_MOVED(2, 0, PLAYER_2),
+                GameEvent.MADE_MOVED(2, 1, PLAYER_1),
+                GameEvent.GAME_FINISHED(board.getCurrentState(), 2, 2, PLAYER_2)
             )
 
 
@@ -142,9 +143,12 @@ class GameTest {
         val testSubscriber: TestObserver<GameEvent> = TestObserver()
         gameEventObservable.subscribe(testSubscriber)
 
-        game.makeMove(0,0)
-        game.makeMove(0,0)
+        game.makeMove(0, 0)
+        game.makeMove(0, 0)
 
-        testSubscriber.assertValues( GameEvent.MADE_MOVED(0, 0),  GameEvent.ERROR(MOVE_NOT_ALLOWED_MSG))
+        testSubscriber.assertValues(
+            GameEvent.MADE_MOVED(0, 0, PLAYER_1),
+            GameEvent.ERROR(MOVE_NOT_ALLOWED_MSG)
+        )
     }
 }
